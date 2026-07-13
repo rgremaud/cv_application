@@ -1,0 +1,22 @@
+body {
+  background-color: gray;
+}
+
+#root {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+}
+
+#formInputs {
+  width: 40%;
+}
+
+#formInputs > * {
+  display: flex;
+  flex-direction: column;
+}
+
+#resume {
+  width: 60%;
+}

@@ -1,10 +1,15 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import './styles/styles.css'
+import './styles/reset.css'
 import Form from './components/Form.jsx'
+import Resume from './components/Resume.jsx'
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Form />
+    <Resume />
   </StrictMode>,
 )
 
