@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ResumeGeneral from "./GeneralResume"
 
 export default function General() {
   const [general, setGeneral] = useState({
@@ -8,8 +9,9 @@ export default function General() {
     phone: '',
   });
 
-  function handleClick() {
-    alert(`${general.firstName} ${general.lastName} ${general.email} ${general.phone}`);
+  function handleClick(props) {
+    // rework this to create a new component with props that displays under Resume 
+    const generalInfo = ResumeGeneral(props);
   }
 
   return (
@@ -71,7 +73,7 @@ export default function General() {
           }
         />
       </label>
-    <button onClick={handleClick}>Submit</button>
+    <button onClick={handleClick(general)}>Submit</button>
     </>
  );
 }
