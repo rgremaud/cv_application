@@ -16,33 +16,33 @@ export default function Education() {
   }
   */
   return (
-    <> 
-      <h2>Education:</h2>       
+    <>
+      <h2>Education:</h2>
       <p>Please enter your highest level schooling that you have completed</p>
       <label>
-        School Name:{' '}
+        School Name:{" "}
         <input
-          //value={email}
+        //value={email}
         />
       </label>
       <label>
-        Enrollment year:{' '}
+        Enrollment year:{" "}
         <input
-          //value={email}
+        //value={email}
         />
       </label>
       <label>
-        Graduation year:{' '}
+        Graduation year:{" "}
         <input
-          //value={email}
+        //value={email}
         />
       </label>
       <label>
-        Field of study (if applicable):{' '}
+        Field of study (if applicable):{" "}
         <input
-          //value={email}
+        //value={email}
         />
       </label>
     </>
- );
+  );
 }

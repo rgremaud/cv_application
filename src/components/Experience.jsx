@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function Experience() {
- /* const [firstName, setFirstName] = useState('');
+  /* const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
 
   const fullName = firstName + ' ' + lastName;
@@ -17,26 +17,25 @@ export default function Experience() {
 
   return (
     <>
-      <h2>Work Experience:</h2>       
+      <h2>Work Experience:</h2>
       <label>
-        Phone Number:{' '}
+        Phone Number:{" "}
         <input
-          //value={email}
+        //value={email}
         />
       </label>
       <label>
-        Phone Number:{' '}
+        Phone Number:{" "}
         <input
-          //value={email}
+        //value={email}
         />
       </label>
       <label>
-        Phone Number:{' '}
+        Phone Number:{" "}
         <input
-          //value={email}
+        //value={email}
         />
       </label>
     </>
- );
+  );
 }
-

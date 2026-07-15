@@ -2,14 +2,16 @@ body {
   background-color: gray;
 }
 
-#root {
+#preview {
   display: flex;
   flex-direction: row;
   width: 100vw;
 }
 
-#formInputs {
+form {
   width: 40%;
+  display: flex;
+  flex-direction: column;
 }
 
 #formInputs > * {
@@ -17,6 +19,6 @@ body {
   flex-direction: column;
 }
 
-#resume {
+.previewDetails {
   width: 60%;
 }

@@ -4,13 +4,11 @@ import Education from "./Education";
 import Experience from "./Experience";
 
 export default function Form() {
-
   return (
-    <div id="formInputs"> 
-      <h1>Lets build your resume!</h1>
+    <div id="preview">
       <General />
-      <Education />
-      <Experience />
+      {/*<Education />
+      <Experience />*/}
     </div>
- );
+  );
 }
