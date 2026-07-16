@@ -1,5 +1,6 @@
 import General from "./General.jsx";
-import ResumeGeneral from "./GeneralResume";
+
+{/* Rework this to display the formatted and final resume */}
 
 export default function Resume() {
   return (
