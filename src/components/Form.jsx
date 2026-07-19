@@ -5,13 +5,18 @@ export default function Form() {
     firstName: "", lastName: "", email: "", phone: "" 
   })
 
-  const [education, setEducation] = useState({
-     school: "", startDate: "", endDate: "", major: "" 
-  })
+  const [school, setSchool] = useState('');
+  const [start, setStart] = useState('');
+  const [end, setEnd] = useState('');
+  const [major, setMajor] = useState('');
+  const [education, setEducation] = useState([]);
 
-  const [experience, setExperience] = useState({
-     employer: "", startDate: "", endDate: "", description: "" 
-  });
+
+  const [employer, setEmployer] = useState('');
+  const [wstart, setWstart] = useState('');
+  const [wend, setWend] = useState('');
+  const [description, setDescription] = useState('');
+  const [experience, setExperience] = useState([]);
 
   return (
     <>
@@ -70,101 +75,84 @@ export default function Form() {
         <label>
           School Name:{" "}
           <input
-            value={education.school}
-            onChange={(e) => {
-              setEducation({
-                ...education,
-                school: e.target.value,
-              });
-            }}
+            value={school}
+            onChange={e => setSchool(e.target.value)}
           />
         </label>
         <label>
           Enrollment year:{" "}
           <input
-            value={education.startDate}
-            onChange={(e) => {
-              setEducation({
-                ...education,
-                startDate: e.target.value,
-              });
-            }}
+            value={start}
+            onChange={e => setStart(e.target.value)}
           />
         </label>
         <label>
           Graduation year:{" "}
           <input
-            value={education.endDate}
-            onChange={(e) => {
-              setEducation({
-                ...education,
-                endDate: e.target.value,
-              });
-            }}
+            value={end}
+            onChange={e => setEnd(e.target.value)}
           />
         </label>
         <label>
           Major:{" "}
           <input
-            value={education.major}
-            onChange={(e) => {
-              setEducation({
-                ...education,
-                major: e.target.value,
-              });
-            }}
+            value={major}
+            onChange={e => setMajor(e.target.value)}
           />
         </label>
+        <button onClick={(e) => {
+          e.preventDefault();
+          setEducation([
+            ...education,
+            { id: crypto.randomUUID(),
+              school: school,
+              start: start,
+              end: end,
+              major: major,
+            }
+          ])
+        }}>Add</button>
         <h2>Work Experience:</h2>
         <label>
           Employer:{" "}
           <input
-            value={experience.employer}
-            onChange={(e) => {
-              setExperience({
-                ...experience,
-                employer: e.target.value,
-              });
-            }}
+            value={employer}
+            onChange={e => setEmployer(e.target.value)}
           />
         </label>
         <label>
           Start Date:{" "}
           <input
-            value={experience.startDate}
-            onChange={(e) => {
-              setExperience({
-                ...experience,
-                startDate: e.target.value,
-              });
-            }}
+            value={wstart}
+            onChange={e => setWstart(e.target.value)}
           />
         </label>
         <label>
           End Date:{" "}
           <input
-            value={experience.endDate}
-            onChange={(e) => {
-              setExperience({
-                ...experience,
-                endDate: e.target.value,
-              });
-            }}
+            value={wend}
+            onChange={e => setWend(e.target.value)}
           />
         </label>
         <label>
           Description:{" "}
           <input
-            value={experience.description}
-            onChange={(e) => {
-              setExperience({
-                ...experience,
-                description: e.target.value,
-              });
-            }}
+            value={description}
+            onChange={e => setDescription(e.target.value)}
           />
         </label>
-        <button>Add Employer</button>
+        <button onClick={(e) => {
+          e.preventDefault();
+          setExperience([
+            ...experience,
+            { id: crypto.randomUUID(),
+              employer: employer,
+              wstart: wstart,
+              wend: wend,
+              description: description,
+            }
+          ])
+        }}>Add</button>
       </form>
       <div className="previewDetails">
         <h1>Preview: </h1>
@@ -174,17 +162,21 @@ export default function Form() {
         <h3>{general.email}</h3>
         <h3>{general.phone}</h3>
         <h2>Education: </h2>
-        <h3>{education.school}</h3>
-        <h3>
-          {education.startDate} to {education.endDate}
-        </h3>
-        <h3>{education.major}</h3>
+        {education.map(entry=>
+        <div key={entry.id}>
+          <h2>{entry.school}</h2>
+          <p>{entry.start} to {entry.end}</p>
+          <p>{entry.major}</p>
+        </div>
+      )}
         <h2>Experience: </h2>
-        <h3>{experience.employer}</h3>
-        <h3>
-          {experience.startDate} to {experience.endDate}
-        </h3>
-        <h3>{experience.description}</h3>
+        {experience.map(entry =>
+        <div key={entry.id}>
+          <h2>{entry.employer}</h2>
+          <p>{entry.wstart} to {entry.wend}</p>
+          <p>{entry.description}</p>
+        </div>
+      )}
       </div>
     </>
   );
