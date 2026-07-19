@@ -5,13 +5,23 @@ export default function Form() {
     firstName: "", lastName: "", email: "", phone: "" 
   })
 
-  const [education, setEducation] = useState({
-     school: "", startDate: "", endDate: "", major: "" 
-  })
+  const edu = [];
 
   const [experience, setExperience] = useState({
      employer: "", startDate: "", endDate: "", description: "" 
   });
+
+  function handleClick(props) {
+    const newEdu = {
+      id: crypto.randomUUID(),
+      school: props.school,
+      startDate: props.startDate,
+      endDate: props.endDate,
+      major: props.major,
+    };
+    edu.push(newEdu);
+    console.log(edu);
+  }
 
   return (
     <>
@@ -71,50 +81,27 @@ export default function Form() {
           School Name:{" "}
           <input
             value={education.school}
-            onChange={(e) => {
-              setEducation({
-                ...education,
-                school: e.target.value,
-              });
-            }}
           />
         </label>
         <label>
           Enrollment year:{" "}
           <input
             value={education.startDate}
-            onChange={(e) => {
-              setEducation({
-                ...education,
-                startDate: e.target.value,
-              });
-            }}
           />
         </label>
         <label>
           Graduation year:{" "}
           <input
             value={education.endDate}
-            onChange={(e) => {
-              setEducation({
-                ...education,
-                endDate: e.target.value,
-              });
-            }}
           />
         </label>
         <label>
           Major:{" "}
           <input
             value={education.major}
-            onChange={(e) => {
-              setEducation({
-                ...education,
-                major: e.target.value,
-              });
-            }}
           />
         </label>
+        <button id="addEdu" onClick={handleClick}> Add Education </button>
         <h2>Work Experience:</h2>
         <label>
           Employer:{" "}
