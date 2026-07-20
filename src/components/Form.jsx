@@ -8,6 +8,9 @@ export default function Form() {
     phone: "",
   });
 
+  const [skills,setSkills] = useState([]);
+  const [skill, setSkill] = useState("");
+
   const [school, setSchool] = useState("");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
@@ -72,6 +75,22 @@ export default function Form() {
             }}
           />
         </label>
+        <h2>Skills:</h2>
+        <label>
+          Skill:{" "}
+          <input value={skill} onChange={(e) => setSkill(e.target.value)} />
+        </label>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            setSkills([
+              ...skills,
+              skill,
+            ]);
+          }}
+        >
+          Add
+        </button>
         <h2>Education:</h2>
         <p>Please enter your highest level schooling that you have completed</p>
         <label>
@@ -155,6 +174,10 @@ export default function Form() {
         <h3>{general.lastName}</h3>
         <h3>{general.email}</h3>
         <h3>{general.phone}</h3>
+        <h2>Skills: </h2>
+        {skills.map((skill) => (
+          <h2>{skill}</h2>
+        ))}
         <h2>Education: </h2>
         {education.map((entry) => (
           <div key={entry.id}>
