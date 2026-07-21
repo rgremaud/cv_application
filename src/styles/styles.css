@@ -22,3 +22,23 @@ form {
 .previewDetails {
   width: 60%;
 }
+
+.generalPreview,
+.skillPreview,
+.educationPreview {
+  display: flex;
+  flex-direction: column;
+}
+
+.generalPreview > .details,
+.educationPreview > .details,
+.skillPreview > .details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.educationPreview > .details {
+  display: flex;
+  flex-direction: column;
+}

@@ -8,8 +8,8 @@ export default function Form() {
     phone: "",
   });
 
-  const [skills,setSkills] = useState([]);
   const [skill, setSkill] = useState("");
+  const [skills, setSkills] = useState([]);
 
   const [school, setSchool] = useState("");
   const [start, setStart] = useState("");
@@ -83,10 +83,7 @@ export default function Form() {
         <button
           onClick={(e) => {
             e.preventDefault();
-            setSkills([
-              ...skills,
-              skill,
-            ]);
+            setSkills([...skills, { skill: skill, id: crypto.randomUUID() }]);
           }}
         >
           Add
@@ -169,35 +166,75 @@ export default function Form() {
       </form>
       <div className="previewDetails">
         <h1>Preview: </h1>
-        <h2>General Information: </h2>
-        <h3>{general.firstName}</h3>
-        <h3>{general.lastName}</h3>
-        <h3>{general.email}</h3>
-        <h3>{general.phone}</h3>
-        <h2>Skills: </h2>
-        {skills.map((skill) => (
-          <h2>{skill}</h2>
-        ))}
-        <h2>Education: </h2>
-        {education.map((entry) => (
-          <div key={entry.id}>
-            <h2>{entry.school}</h2>
-            <p>
-              {entry.start} to {entry.end}
-            </p>
-            <p>{entry.major}</p>
+        <div className="generalPreview">
+          <h2>General Information: </h2>
+          <div className="details">
+            <h3>{general.firstName}</h3>
+            <h3>{general.lastName}</h3>
+            <h3>{general.email}</h3>
+            <h3>{general.phone}</h3>
           </div>
-        ))}
-        <h2>Experience: </h2>
-        {experience.map((entry) => (
-          <div key={entry.id}>
-            <h2>{entry.employer}</h2>
-            <p>
-              {entry.wstart} to {entry.wend}
-            </p>
-            <p>{entry.description}</p>
+        </div>
+        <div className="skillPreview">
+          <h2>Skills: </h2>
+          <div className="details">
+            {skills.map((skill) => (
+              <h3 key={skill.id}>
+                {skill.skill}
+                <button
+                  onClick={() => {
+                    setSkills(skills.filter((s) => s.id !== skill.id));
+                  }}
+                >
+                  Remove
+                </button>
+              </h3>
+            ))}
           </div>
-        ))}
+        </div>
+        <div className="educationPreview">
+          <h2>Education: </h2>
+          <div className="details">
+            {education.map((entry) => (
+              <div key={entry.id}>
+                <h2>
+                  {entry.school} - {entry.start} to {entry.end}
+                </h2>
+                <p>
+                  {entry.major}
+                  <button
+                    onClick={() => {
+                      setEducation(education.filter((e) => e.id !== entry.id));
+                    }}
+                  >
+                    Remove
+                  </button>
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="experiencePreview">
+          <h2>Experience: </h2>
+          <div className="details">
+            {experience.map((entry) => (
+              <div key={entry.id}>
+                <h2>{entry.employer}</h2>
+                <p>
+                  {entry.wstart} to {entry.wend}
+                </p>
+                <p>{entry.description}</p>
+                <button
+                  onClick={() => {
+                    setExperience(experience.filter((e) => e.id !== entry.id));
+                  }}
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );
