@@ -42,3 +42,11 @@ form {
   display: flex;
   flex-direction: column;
 }
+
+input:invalid {
+  border: 1px dashed red;
+}
+
+input:valid {
+  border: 1px solid black;
+}

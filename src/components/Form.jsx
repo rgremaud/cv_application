@@ -20,7 +20,9 @@ export default function Form() {
   const [employer, setEmployer] = useState("");
   const [wstart, setWstart] = useState("");
   const [wend, setWend] = useState("");
-  const [description, setDescription] = useState("");
+  const [bulletOne, setBulletOne] = useState("");
+  const [bulletTwo, setBulletTwo] = useState("");
+  const [bulletThree, setBulletThree] = useState("");
   const [experience, setExperience] = useState([]);
 
   return (
@@ -31,6 +33,9 @@ export default function Form() {
           First name:{" "}
           <input
             value={general.firstName}
+            type="text"
+            minlength="2"
+            placeholder="Albert"
             onChange={(e) => {
               setGeneral({
                 ...general,
@@ -43,6 +48,9 @@ export default function Form() {
           Last name:{" "}
           <input
             value={general.lastName}
+            type="text"
+            minlength="2"
+            placeholder="Einstein"
             onChange={(e) => {
               setGeneral({
                 ...general,
@@ -55,6 +63,8 @@ export default function Form() {
           Email:{" "}
           <input
             value={general.email}
+            type="email"
+            placeholder="einstein@gmail.com"
             onChange={(e) => {
               setGeneral({
                 ...general,
@@ -67,6 +77,9 @@ export default function Form() {
           Phone Number:{" "}
           <input
             value={general.phone}
+            type="tel"
+            pattern="[0-9]{3} [0-9]{3} [0-9]{4}"
+            placeholder="555 555 1234"
             onChange={(e) => {
               setGeneral({
                 ...general,
@@ -78,7 +91,12 @@ export default function Form() {
         <h2>Skills:</h2>
         <label>
           Skill:{" "}
-          <input value={skill} onChange={(e) => setSkill(e.target.value)} />
+          <input 
+          value={skill}
+          type="text"
+          placeholder="Physics"
+          onChange={(e) => setSkill(e.target.value)}
+        />
         </label>
         <button
           onClick={(e) => {
@@ -92,19 +110,43 @@ export default function Form() {
         <p>Please enter your highest level schooling that you have completed</p>
         <label>
           School Name:{" "}
-          <input value={school} onChange={(e) => setSchool(e.target.value)} />
+          <input 
+            value={school}
+            type="text"
+            placeholder="University of Zurich"
+            onChange={(e) => setSchool(e.target.value)}
+          />
         </label>
         <label>
           Enrollment year:{" "}
-          <input value={start} onChange={(e) => setStart(e.target.value)} />
+          <input value={start} 
+            type="number"
+            min="1900"
+            max="2099"
+            placeholder="2006"
+            step="1"
+            onChange={(e) => setStart(e.target.value)}
+        />
         </label>
         <label>
           Graduation year:{" "}
-          <input value={end} onChange={(e) => setEnd(e.target.value)} />
+          <input value={end}
+            type="number"
+            min="1900"
+            max="2099"
+            placeholder="2010"
+            step="1"
+            onChange={(e) => setEnd(e.target.value)}
+        />
         </label>
         <label>
           Major:{" "}
-          <input value={major} onChange={(e) => setMajor(e.target.value)} />
+          <input
+          value={major}
+          type="text"
+          placeholder="Physics"
+          onChange={(e) => setMajor(e.target.value)}
+        />
         </label>
         <button
           onClick={(e) => {
@@ -128,22 +170,56 @@ export default function Form() {
           Employer:{" "}
           <input
             value={employer}
+            type="text"
+            placeholder="Insititute for Advanced Study"
             onChange={(e) => setEmployer(e.target.value)}
           />
         </label>
         <label>
           Start Date:{" "}
-          <input value={wstart} onChange={(e) => setWstart(e.target.value)} />
+          <input value={wstart}
+            type="number"
+            min="1900"
+            max="2099"
+            placeholder="2010"
+            step="1"
+            onChange={(e) => setWstart(e.target.value)} />
         </label>
         <label>
           End Date:{" "}
-          <input value={wend} onChange={(e) => setWend(e.target.value)} />
+          <input value={wend}
+            type="number"
+            min="1900"
+            max="2099"
+            placeholder="2019"
+            step="1"
+            onChange={(e) => setWend(e.target.value)} />
         </label>
         <label>
-          Description:{" "}
+          Bullet point one:{" "}
           <input
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={bulletOne}
+            type="text"
+            placeholder="Solve lots of complex problems"
+            onChange={(e) => setBulletOne(e.target.value)}
+          />
+        </label>
+        <label>
+          Bullet point two:{" "}
+          <input
+            value={bulletTwo}
+            type="text"
+            placeholder="Mass-energy equivalence"
+            onChange={(e) => setBulletTwo(e.target.value)}
+          />
+        </label>
+        <label>
+          Bullet point three:{" "}
+          <input
+            value={bulletThree}
+            type="text"
+            placeholder="Create the theory of relativity"
+            onChange={(e) => setBulletThree(e.target.value)}
           />
         </label>
         <button
@@ -156,7 +232,9 @@ export default function Form() {
                 employer: employer,
                 wstart: wstart,
                 wend: wend,
-                description: description,
+                bulletOne: bulletOne,
+                bulletTwo: bulletTwo,
+                bulletThree: bulletThree,
               },
             ]);
           }}
