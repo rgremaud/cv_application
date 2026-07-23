@@ -14,6 +14,10 @@ form {
   flex-direction: column;
 }
 
+h3 {
+  margin: 1px 5px 1px 5px;
+}
+
 #formInputs > * {
   display: flex;
   flex-direction: column;
@@ -30,12 +34,21 @@ form {
   flex-direction: column;
 }
 
-.generalPreview > .details,
 .educationPreview > .details,
 .skillPreview > .details {
   display: flex;
   flex-direction: row;
+}
+
+.generalPreview > .details {
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
+}
+
+.generalPreview > .details > div {
+  display: flex;
+  flex-direction: row;
 }
 
 .educationPreview > .details {

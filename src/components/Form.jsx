@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ReactComponent as Logo } from "./remove.svg"
 
 export default function Form() {
   const [general, setGeneral] = useState({
@@ -102,6 +103,7 @@ export default function Form() {
           onClick={(e) => {
             e.preventDefault();
             setSkills([...skills, { skill: skill, id: crypto.randomUUID() }]);
+            setSkill("");
           }}
         >
           Add
@@ -161,6 +163,10 @@ export default function Form() {
                 major: major,
               },
             ]);
+            setSchool("");
+            setStart("");
+            setEnd("");
+            setMajor("");
           }}
         >
           Add
@@ -237,6 +243,12 @@ export default function Form() {
                 bulletThree: bulletThree,
               },
             ]);
+            setEmployer("");
+            setWstart("");
+            setWend("");
+            setBulletOne("");
+            setBulletTwo("");
+            setBulletThree("");
           }}
         >
           Add
@@ -247,10 +259,14 @@ export default function Form() {
         <div className="generalPreview">
           <h2>General Information: </h2>
           <div className="details">
-            <h3>{general.firstName}</h3>
-            <h3>{general.lastName}</h3>
-            <h3>{general.email}</h3>
-            <h3>{general.phone}</h3>
+            <div>
+              <h3>{general.firstName}</h3>
+              <h3>{general.lastName}</h3>
+            </div>
+            <div>
+              <h3>{general.email}</h3>
+              <h3>{general.phone}</h3>
+            </div>
           </div>
         </div>
         <div className="skillPreview">
@@ -297,17 +313,16 @@ export default function Form() {
           <div className="details">
             {experience.map((entry) => (
               <div key={entry.id}>
-                <h2>{entry.employer}</h2>
-                <p>
-                  {entry.wstart} to {entry.wend}
-                </p>
-                <p>{entry.description}</p>
+                <h2>{entry.employer} - {entry.wstart} to {entry.wend} </h2>
+                <p>• {entry.bulletOne}</p>
+                <p>• {entry.bulletTwo}</p>
+                <p>• {entry.bulletThree}</p>
                 <button
                   onClick={() => {
                     setExperience(experience.filter((e) => e.id !== entry.id));
                   }}
                 >
-                  Remove
+                Remove
                 </button>
               </div>
             ))}
