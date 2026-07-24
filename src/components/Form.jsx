@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ReactComponent as Logo } from "./remove.svg"
+import Remove from "./remove.svg";
 
 export default function Form() {
   const [general, setGeneral] = useState({
@@ -92,12 +92,12 @@ export default function Form() {
         <h2>Skills:</h2>
         <label>
           Skill:{" "}
-          <input 
-          value={skill}
-          type="text"
-          placeholder="Physics"
-          onChange={(e) => setSkill(e.target.value)}
-        />
+          <input
+            value={skill}
+            type="text"
+            placeholder="Physics"
+            onChange={(e) => setSkill(e.target.value)}
+          />
         </label>
         <button
           onClick={(e) => {
@@ -106,13 +106,13 @@ export default function Form() {
             setSkill("");
           }}
         >
-          Add
+          Add skill
         </button>
         <h2>Education:</h2>
         <p>Please enter your highest level schooling that you have completed</p>
         <label>
           School Name:{" "}
-          <input 
+          <input
             value={school}
             type="text"
             placeholder="University of Zurich"
@@ -121,34 +121,36 @@ export default function Form() {
         </label>
         <label>
           Enrollment year:{" "}
-          <input value={start} 
+          <input
+            value={start}
             type="number"
             min="1900"
             max="2099"
             placeholder="2006"
             step="1"
             onChange={(e) => setStart(e.target.value)}
-        />
+          />
         </label>
         <label>
           Graduation year:{" "}
-          <input value={end}
+          <input
+            value={end}
             type="number"
             min="1900"
             max="2099"
             placeholder="2010"
             step="1"
             onChange={(e) => setEnd(e.target.value)}
-        />
+          />
         </label>
         <label>
           Major:{" "}
           <input
-          value={major}
-          type="text"
-          placeholder="Physics"
-          onChange={(e) => setMajor(e.target.value)}
-        />
+            value={major}
+            type="text"
+            placeholder="Physics"
+            onChange={(e) => setMajor(e.target.value)}
+          />
         </label>
         <button
           onClick={(e) => {
@@ -169,7 +171,7 @@ export default function Form() {
             setMajor("");
           }}
         >
-          Add
+          Add education
         </button>
         <h2>Work Experience:</h2>
         <label>
@@ -183,23 +185,27 @@ export default function Form() {
         </label>
         <label>
           Start Date:{" "}
-          <input value={wstart}
+          <input
+            value={wstart}
             type="number"
             min="1900"
             max="2099"
             placeholder="2010"
             step="1"
-            onChange={(e) => setWstart(e.target.value)} />
+            onChange={(e) => setWstart(e.target.value)}
+          />
         </label>
         <label>
           End Date:{" "}
-          <input value={wend}
+          <input
+            value={wend}
             type="number"
             min="1900"
             max="2099"
             placeholder="2019"
             step="1"
-            onChange={(e) => setWend(e.target.value)} />
+            onChange={(e) => setWend(e.target.value)}
+          />
         </label>
         <label>
           Bullet point one:{" "}
@@ -251,7 +257,10 @@ export default function Form() {
             setBulletThree("");
           }}
         >
-          Add
+          Add experience
+        </button>
+        <button>
+          Finalize and build resume!
         </button>
       </form>
       <div className="previewDetails">
@@ -280,7 +289,7 @@ export default function Form() {
                     setSkills(skills.filter((s) => s.id !== skill.id));
                   }}
                 >
-                  Remove
+                  <img src={Remove} alt="Remove" />
                 </button>
               </h3>
             ))}
@@ -301,7 +310,7 @@ export default function Form() {
                       setEducation(education.filter((e) => e.id !== entry.id));
                     }}
                   >
-                    Remove
+                    <img src={Remove} alt="Remove" />
                   </button>
                 </p>
               </div>
@@ -313,7 +322,9 @@ export default function Form() {
           <div className="details">
             {experience.map((entry) => (
               <div key={entry.id}>
-                <h2>{entry.employer} - {entry.wstart} to {entry.wend} </h2>
+                <h2>
+                  {entry.employer} - {entry.wstart} to {entry.wend}{" "}
+                </h2>
                 <p>• {entry.bulletOne}</p>
                 <p>• {entry.bulletTwo}</p>
                 <p>• {entry.bulletThree}</p>
@@ -322,7 +333,7 @@ export default function Form() {
                     setExperience(experience.filter((e) => e.id !== entry.id));
                   }}
                 >
-                Remove
+                  <img src={Remove} alt="Remove" />
                 </button>
               </div>
             ))}
