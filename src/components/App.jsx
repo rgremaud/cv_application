@@ -1,7 +1,8 @@
 import { useState } from "react";
+import Resume from "./Resume.jsx";
 import Remove from "./remove.svg";
 
-export default function Form() {
+export default function App() {
   const [general, setGeneral] = useState({
     firstName: "",
     lastName: "",
@@ -26,16 +27,30 @@ export default function Form() {
   const [bulletThree, setBulletThree] = useState("");
   const [experience, setExperience] = useState([]);
 
+  const [showForm, setShowForm] = useState(true);
+  const [showPreview, setShowPreview] = useState(true);
+  const [showResume, setShowResume] = useState(false); 
+
+
+  function finalResume() {
+    // call Resume component to build the final Resume
+    // hide the form and preview 
+    setShowForm(false);
+    setShowPreview(false);
+    setShowResume(true);
+  }
+
   return (
     <>
-      <form>
+    { showForm ? 
+      <form id="formInputs">
         <h2>General Information:</h2>
         <label>
           First name:{" "}
           <input
             value={general.firstName}
             type="text"
-            minlength="2"
+            minLength="2"
             placeholder="Albert"
             onChange={(e) => {
               setGeneral({
@@ -50,7 +65,7 @@ export default function Form() {
           <input
             value={general.lastName}
             type="text"
-            minlength="2"
+            minLength="2"
             placeholder="Einstein"
             onChange={(e) => {
               setGeneral({
@@ -259,10 +274,15 @@ export default function Form() {
         >
           Add experience
         </button>
-        <button>
+        <button
+        onClick={(e) => {
+          finalResume();
+        }}
+    >
           Finalize and build resume!
         </button>
-      </form>
+      </form> : null }
+      { showPreview ? 
       <div className="previewDetails">
         <h1>Preview: </h1>
         <div className="generalPreview">
@@ -339,7 +359,8 @@ export default function Form() {
             ))}
           </div>
         </div>
-      </div>
+      </div> : null }
+    { showResume ? <Resume/> : null }
     </>
   );
 }
