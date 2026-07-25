@@ -15,7 +15,14 @@ body {
 }
 
 form {
+  margin: 1% 5% 5% 1%;
   width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+label {
   display: flex;
   flex-direction: column;
 }
@@ -31,6 +38,18 @@ h3 {
 #formInputs > * {
   display: flex;
   flex-direction: column;
+}
+
+.formButton {
+  width: 50%;
+}
+
+input:invalid {
+  border: 1px solid #FF6F00;
+}
+
+input:valid {
+  border: 1px solid #0f62Fe;
 }
 
 .previewDetails {
@@ -66,10 +85,7 @@ h3 {
   flex-direction: column;
 }
 
-input:invalid {
-  border: 1px solid #FF6F00;
-}
-
-input:valid {
-  border: 1px solid #0f62Fe;
+.prevButton {
+  height: 1.5rem;
+  width: 1.5rem;
 }

@@ -32,9 +32,7 @@ export default function App() {
   const [showResume, setShowResume] = useState(false); 
 
 
-  function finalResume() {
-    // call Resume component to build the final Resume
-    // hide the form and preview 
+  function updateView() {
     setShowForm(false);
     setShowPreview(false);
     setShowResume(true);
@@ -115,6 +113,7 @@ export default function App() {
           />
         </label>
         <button
+          className="formButton"
           onClick={(e) => {
             e.preventDefault();
             setSkills([...skills, { skill: skill, id: crypto.randomUUID() }]);
@@ -168,6 +167,7 @@ export default function App() {
           />
         </label>
         <button
+          className="formButton"
           onClick={(e) => {
             e.preventDefault();
             setEducation([
@@ -250,6 +250,7 @@ export default function App() {
           />
         </label>
         <button
+          className="formButton"
           onClick={(e) => {
             e.preventDefault();
             setExperience([
@@ -275,8 +276,10 @@ export default function App() {
           Add experience
         </button>
         <button
+          className="formButton"
         onClick={(e) => {
-          finalResume();
+          e.preventDefault();
+          updateView();
         }}
     >
           Finalize and build resume!
@@ -305,6 +308,7 @@ export default function App() {
               <h3 key={skill.id}>
                 {skill.skill}
                 <button
+                  className="prevButton"
                   onClick={() => {
                     setSkills(skills.filter((s) => s.id !== skill.id));
                   }}
@@ -322,16 +326,17 @@ export default function App() {
               <div key={entry.id}>
                 <h2>
                   {entry.school} - {entry.start} to {entry.end}
-                </h2>
-                <p>
-                  {entry.major}
                   <button
+                    className="prevButton"
                     onClick={() => {
                       setEducation(education.filter((e) => e.id !== entry.id));
                     }}
                   >
                     <img src={Remove} alt="Remove" />
                   </button>
+                </h2>
+                <p>
+                  {entry.major}
                 </p>
               </div>
             ))}
@@ -344,23 +349,28 @@ export default function App() {
               <div key={entry.id}>
                 <h2>
                   {entry.employer} - {entry.wstart} to {entry.wend}{" "}
-                </h2>
-                <p>• {entry.bulletOne}</p>
-                <p>• {entry.bulletTwo}</p>
-                <p>• {entry.bulletThree}</p>
                 <button
+                    className="prevButton"
                   onClick={() => {
                     setExperience(experience.filter((e) => e.id !== entry.id));
                   }}
                 >
                   <img src={Remove} alt="Remove" />
                 </button>
+                </h2>
+                <p>• {entry.bulletOne}</p>
+                <p>• {entry.bulletTwo}</p>
+                <p>• {entry.bulletThree}</p>
               </div>
             ))}
           </div>
         </div>
       </div> : null }
-    { showResume ? <Resume/> : null }
+    { showResume ? <Resume general={general}
+                           skills={skills}
+                           education={education}
+                           experience={experience}
+        /> : null }
     </>
   );
 }
