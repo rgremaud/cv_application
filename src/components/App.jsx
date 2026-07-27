@@ -20,6 +20,7 @@ export default function App() {
   const [education, setEducation] = useState([]);
 
   const [employer, setEmployer] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
   const [wstart, setWstart] = useState("");
   const [wend, setWend] = useState("");
   const [bulletOne, setBulletOne] = useState("");
@@ -43,66 +44,71 @@ export default function App() {
     { showForm ? 
       <form id="formInputs">
         <h2>General Information:</h2>
-        <label>
-          First name:{" "}
-          <input
-            value={general.firstName}
-            type="text"
-            minLength="2"
-            placeholder="Albert"
-            onChange={(e) => {
-              setGeneral({
-                ...general,
-                firstName: e.target.value,
-              });
-            }}
+        <div className="formRow">
+          <label>
+            First name:{" "}
+            <input
+              value={general.firstName}
+              type="text"
+              minLength="2"
+              placeholder="Albert"
+              onChange={(e) => {
+                setGeneral({
+                  ...general,
+                  firstName: e.target.value,
+                });
+              }}
+            />
+          </label>
+          <label>
+            Last name:{" "}
+            <input
+              value={general.lastName}
+              type="text"
+              minLength="2"
+              placeholder="Einstein"
+              onChange={(e) => {
+                setGeneral({
+                  ...general,
+                  lastName: e.target.value,
+                });
+              }}
           />
-        </label>
-        <label>
-          Last name:{" "}
-          <input
-            value={general.lastName}
-            type="text"
-            minLength="2"
-            placeholder="Einstein"
-            onChange={(e) => {
-              setGeneral({
-                ...general,
-                lastName: e.target.value,
-              });
-            }}
-          />
-        </label>
-        <label>
-          Email:{" "}
-          <input
-            value={general.email}
-            type="email"
-            placeholder="einstein@gmail.com"
-            onChange={(e) => {
-              setGeneral({
-                ...general,
-                email: e.target.value,
-              });
-            }}
-          />
-        </label>
-        <label>
-          Phone Number:{" "}
-          <input
-            value={general.phone}
-            type="tel"
-            pattern="[0-9]{3} [0-9]{3} [0-9]{4}"
-            placeholder="555 555 1234"
-            onChange={(e) => {
-              setGeneral({
-                ...general,
-                phone: e.target.value,
-              });
-            }}
-          />
-        </label>
+          </label>
+        </div>
+        <div className="formRow">
+          <label>
+            Email:{" "}
+            <input
+              value={general.email}
+              type="email"
+              placeholder="einstein@gmail.com"
+              onChange={(e) => {
+                setGeneral({
+                  ...general,
+                  email: e.target.value,
+                });
+              }}
+            />
+          </label>
+          <label>
+            Phone Number:{" "}
+            <input
+              value={general.phone}
+              type="tel"
+              pattern="[0-9]{3} [0-9]{3} [0-9]{4}"
+              placeholder="555 555 1234"
+              onChange={(e) => {
+                setGeneral({
+                  ...general,
+                  phone: e.target.value,
+                });
+              }}
+            />
+          </label>
+        </div>
         <h2>Skills:</h2>
+      <div className="formRow">
         <label>
           Skill:{" "}
           <input
@@ -122,6 +128,7 @@ export default function App() {
         >
           Add skill
         </button>
+      </div>
         <h2>Education:</h2>
         <p>Please enter your highest level schooling that you have completed</p>
         <label>
@@ -133,6 +140,7 @@ export default function App() {
             onChange={(e) => setSchool(e.target.value)}
           />
         </label>
+      <div className="formRow">
         <label>
           Enrollment year:{" "}
           <input
@@ -157,6 +165,7 @@ export default function App() {
             onChange={(e) => setEnd(e.target.value)}
           />
         </label>
+      </div>
         <label>
           Major:{" "}
           <input
@@ -199,6 +208,16 @@ export default function App() {
           />
         </label>
         <label>
+          Title:{" "}
+          <input
+            value={jobTitle}
+            type="text"
+            placeholder="Physicist"
+            onChange={(e) => setJobTitle(e.target.value)}
+          />
+        </label>
+      <div className="formRow">
+        <label>
           Start Date:{" "}
           <input
             value={wstart}
@@ -222,6 +241,7 @@ export default function App() {
             onChange={(e) => setWend(e.target.value)}
           />
         </label>
+      </div>
         <label>
           Bullet point one:{" "}
           <input
@@ -258,6 +278,7 @@ export default function App() {
               {
                 id: crypto.randomUUID(),
                 employer: employer,
+                jobTitle: jobTitle,
                 wstart: wstart,
                 wend: wend,
                 bulletOne: bulletOne,
@@ -324,7 +345,7 @@ export default function App() {
           <div className="details">
             {education.map((entry) => (
               <div key={entry.id}>
-                <h2>
+                <h3>
                   {entry.school} - {entry.start} to {entry.end}
                   <button
                     className="prevButton"
@@ -334,7 +355,7 @@ export default function App() {
                   >
                     <img src={Remove} alt="Remove" />
                   </button>
-                </h2>
+                </h3>
                 <p>
                   {entry.major}
                 </p>
@@ -347,7 +368,7 @@ export default function App() {
           <div className="details">
             {experience.map((entry) => (
               <div key={entry.id}>
-                <h2>
+                <h3>
                   {entry.employer} - {entry.wstart} to {entry.wend}{" "}
                 <button
                     className="prevButton"
@@ -357,7 +378,8 @@ export default function App() {
                 >
                   <img src={Remove} alt="Remove" />
                 </button>
-                </h2>
+                </h3>
+                <div>{entry.jobTitle}</div>
                 <p>• {entry.bulletOne}</p>
                 <p>• {entry.bulletTwo}</p>
                 <p>• {entry.bulletThree}</p>
