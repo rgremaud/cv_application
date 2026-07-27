@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Mozilla+Text:wght@200..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Mozilla+Text:wght@200..700&display=swap");
 
 body {
   background-color: #ffffff;
@@ -12,10 +12,10 @@ body {
   display: flex;
   flex-direction: row;
   width: 100vw;
+  margin: 1vh 1vw;
 }
 
 form {
-  margin: 1% 5% 5% 1%;
   width: 40%;
   display: flex;
   flex-direction: column;
@@ -27,13 +27,23 @@ form {
   grid-template-columns: 1fr 1fr;
 }
 
+.formRow > * {
+  margin: 1% 5% 0 5%;
+}
+
+.labelRow,
+.buttonRow {
+  margin: 0.5% 2.5% 0 2.5%;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: center;
+}
+
 label {
   display: flex;
   flex-direction: column;
-}
-
-form > * {
-  margin-bottom: 2px;
 }
 
 h3 {
@@ -45,16 +55,21 @@ h3 {
   flex-direction: column;
 }
 
-.formButton {
-  width: 50%;
+button {
+  width: fit-content;
+  height: fit-content;
+}
+
+button:hover {
+  background-color: #be95ff;
 }
 
 input:invalid {
-  border: 1px solid #FF6F00;
+  border: 1px solid #ff6f00;
 }
 
 input:valid {
-  border: 1px solid #0f62Fe;
+  border: 1px solid #0f62fe;
 }
 
 .previewDetails {

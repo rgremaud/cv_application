@@ -30,8 +30,7 @@ export default function App() {
 
   const [showForm, setShowForm] = useState(true);
   const [showPreview, setShowPreview] = useState(true);
-  const [showResume, setShowResume] = useState(false); 
-
+  const [showResume, setShowResume] = useState(false);
 
   function updateView() {
     setShowForm(false);
@@ -41,358 +40,380 @@ export default function App() {
 
   return (
     <>
-    { showForm ? 
-      <form id="formInputs">
-        <h2>General Information:</h2>
-        <div className="formRow">
-          <label>
-            First name:{" "}
+      {showForm ? (
+        <form id="formInputs">
+          <h2>General Information:</h2>
+          <div className="formRow">
+            <label>
+              First name:{" "}
+              <input
+                value={general.firstName}
+                type="text"
+                minLength="2"
+                placeholder="Albert"
+                onChange={(e) => {
+                  setGeneral({
+                    ...general,
+                    firstName: e.target.value,
+                  });
+                }}
+              />
+            </label>
+            <label>
+              Last name:{" "}
+              <input
+                value={general.lastName}
+                type="text"
+                minLength="2"
+                placeholder="Einstein"
+                onChange={(e) => {
+                  setGeneral({
+                    ...general,
+                    lastName: e.target.value,
+                  });
+                }}
+              />
+            </label>
+          </div>
+          <div className="formRow">
+            <label>
+              Email:{" "}
+              <input
+                value={general.email}
+                type="email"
+                placeholder="einstein@gmail.com"
+                onChange={(e) => {
+                  setGeneral({
+                    ...general,
+                    email: e.target.value,
+                  });
+                }}
+              />
+            </label>
+            <label>
+              Phone Number:{" "}
+              <input
+                value={general.phone}
+                type="tel"
+                pattern="[0-9]{3} [0-9]{3} [0-9]{4}"
+                placeholder="555 555 1234"
+                onChange={(e) => {
+                  setGeneral({
+                    ...general,
+                    phone: e.target.value,
+                  });
+                }}
+              />
+            </label>
+          </div>
+          <h2>Skills:</h2>
+          <div className="formRow">
+            <label>
+              Skill:{" "}
+              <input
+                value={skill}
+                type="text"
+                placeholder="Physics"
+                onChange={(e) => setSkill(e.target.value)}
+              />
+            </label>
+            <button
+              className="formButton"
+              onClick={(e) => {
+                e.preventDefault();
+                setSkills([
+                  ...skills,
+                  { skill: skill, id: crypto.randomUUID() },
+                ]);
+                setSkill("");
+              }}
+            >
+              Add skill
+            </button>
+          </div>
+          <h2>Education:</h2>
+          <p>
+            Please enter your highest level schooling that you have completed
+          </p>
+          <div className="formRow">
+            <label>
+              School Name:{" "}
+              <input
+                value={school}
+                type="text"
+                placeholder="University of Zurich"
+                onChange={(e) => setSchool(e.target.value)}
+              />
+            </label>
+            <label>
+              Major:{" "}
+              <input
+                value={major}
+                type="text"
+                placeholder="Physics"
+                onChange={(e) => setMajor(e.target.value)}
+              />
+            </label>
+          </div>
+          <div className="formRow">
+            <label>
+              Enrollment year:{" "}
+              <input
+                value={start}
+                type="number"
+                min="1900"
+                max="2099"
+                placeholder="2006"
+                step="1"
+                onChange={(e) => setStart(e.target.value)}
+              />
+            </label>
+            <label>
+              Graduation year:{" "}
+              <input
+                value={end}
+                type="number"
+                min="1900"
+                max="2099"
+                placeholder="2010"
+                step="1"
+                onChange={(e) => setEnd(e.target.value)}
+              />
+            </label>
+          </div>
+          <div class="buttonRow">
+            <button
+              className="formButton"
+              onClick={(e) => {
+                e.preventDefault();
+                setEducation([
+                  ...education,
+                  {
+                    id: crypto.randomUUID(),
+                    school: school,
+                    start: start,
+                    end: end,
+                    major: major,
+                  },
+                ]);
+                setSchool("");
+                setStart("");
+                setEnd("");
+                setMajor("");
+              }}
+            >
+              Add education
+            </button>
+          </div>
+          <h2>Work Experience:</h2>
+          <div class="formRow">
+            <label>
+              Employer:{" "}
+              <input
+                value={employer}
+                type="text"
+                placeholder="Insititute for Advanced Study"
+                onChange={(e) => setEmployer(e.target.value)}
+              />
+            </label>
+            <label>
+              Title:{" "}
+              <input
+                value={jobTitle}
+                type="text"
+                placeholder="Physicist"
+                onChange={(e) => setJobTitle(e.target.value)}
+              />
+            </label>
+          </div>
+          <div className="formRow">
+            <label>
+              Start Date:{" "}
+              <input
+                value={wstart}
+                type="number"
+                min="1900"
+                max="2099"
+                placeholder="2010"
+                step="1"
+                onChange={(e) => setWstart(e.target.value)}
+              />
+            </label>
+            <label>
+              End Date:{" "}
+              <input
+                value={wend}
+                type="number"
+                min="1900"
+                max="2099"
+                placeholder="2019"
+                step="1"
+                onChange={(e) => setWend(e.target.value)}
+              />
+            </label>
+          </div>
+          <label className="labelRow">
+            Bullet point one:{" "}
             <input
-              value={general.firstName}
+              value={bulletOne}
               type="text"
-              minLength="2"
-              placeholder="Albert"
-              onChange={(e) => {
-                setGeneral({
-                  ...general,
-                  firstName: e.target.value,
-                });
-              }}
+              placeholder="Solve lots of complex problems"
+              onChange={(e) => setBulletOne(e.target.value)}
             />
           </label>
-          <label>
-            Last name:{" "}
+          <label className="labelRow">
+            Bullet point two:{" "}
             <input
-              value={general.lastName}
+              value={bulletTwo}
               type="text"
-              minLength="2"
-              placeholder="Einstein"
-              onChange={(e) => {
-                setGeneral({
-                  ...general,
-                  lastName: e.target.value,
-                });
-              }}
-          />
-          </label>
-        </div>
-        <div className="formRow">
-          <label>
-            Email:{" "}
-            <input
-              value={general.email}
-              type="email"
-              placeholder="einstein@gmail.com"
-              onChange={(e) => {
-                setGeneral({
-                  ...general,
-                  email: e.target.value,
-                });
-              }}
+              placeholder="Mass-energy equivalence"
+              onChange={(e) => setBulletTwo(e.target.value)}
             />
           </label>
-          <label>
-            Phone Number:{" "}
+          <label className="labelRow">
+            Bullet point three:{" "}
             <input
-              value={general.phone}
-              type="tel"
-              pattern="[0-9]{3} [0-9]{3} [0-9]{4}"
-              placeholder="555 555 1234"
-              onChange={(e) => {
-                setGeneral({
-                  ...general,
-                  phone: e.target.value,
-                });
-              }}
+              value={bulletThree}
+              type="text"
+              placeholder="Create the theory of relativity"
+              onChange={(e) => setBulletThree(e.target.value)}
             />
           </label>
-        </div>
-        <h2>Skills:</h2>
-      <div className="formRow">
-        <label>
-          Skill:{" "}
-          <input
-            value={skill}
-            type="text"
-            placeholder="Physics"
-            onChange={(e) => setSkill(e.target.value)}
-          />
-        </label>
-        <button
-          className="formButton"
-          onClick={(e) => {
-            e.preventDefault();
-            setSkills([...skills, { skill: skill, id: crypto.randomUUID() }]);
-            setSkill("");
-          }}
-        >
-          Add skill
-        </button>
-      </div>
-        <h2>Education:</h2>
-        <p>Please enter your highest level schooling that you have completed</p>
-        <label>
-          School Name:{" "}
-          <input
-            value={school}
-            type="text"
-            placeholder="University of Zurich"
-            onChange={(e) => setSchool(e.target.value)}
-          />
-        </label>
-      <div className="formRow">
-        <label>
-          Enrollment year:{" "}
-          <input
-            value={start}
-            type="number"
-            min="1900"
-            max="2099"
-            placeholder="2006"
-            step="1"
-            onChange={(e) => setStart(e.target.value)}
-          />
-        </label>
-        <label>
-          Graduation year:{" "}
-          <input
-            value={end}
-            type="number"
-            min="1900"
-            max="2099"
-            placeholder="2010"
-            step="1"
-            onChange={(e) => setEnd(e.target.value)}
-          />
-        </label>
-      </div>
-        <label>
-          Major:{" "}
-          <input
-            value={major}
-            type="text"
-            placeholder="Physics"
-            onChange={(e) => setMajor(e.target.value)}
-          />
-        </label>
-        <button
-          className="formButton"
-          onClick={(e) => {
-            e.preventDefault();
-            setEducation([
-              ...education,
-              {
-                id: crypto.randomUUID(),
-                school: school,
-                start: start,
-                end: end,
-                major: major,
-              },
-            ]);
-            setSchool("");
-            setStart("");
-            setEnd("");
-            setMajor("");
-          }}
-        >
-          Add education
-        </button>
-        <h2>Work Experience:</h2>
-        <label>
-          Employer:{" "}
-          <input
-            value={employer}
-            type="text"
-            placeholder="Insititute for Advanced Study"
-            onChange={(e) => setEmployer(e.target.value)}
-          />
-        </label>
-        <label>
-          Title:{" "}
-          <input
-            value={jobTitle}
-            type="text"
-            placeholder="Physicist"
-            onChange={(e) => setJobTitle(e.target.value)}
-          />
-        </label>
-      <div className="formRow">
-        <label>
-          Start Date:{" "}
-          <input
-            value={wstart}
-            type="number"
-            min="1900"
-            max="2099"
-            placeholder="2010"
-            step="1"
-            onChange={(e) => setWstart(e.target.value)}
-          />
-        </label>
-        <label>
-          End Date:{" "}
-          <input
-            value={wend}
-            type="number"
-            min="1900"
-            max="2099"
-            placeholder="2019"
-            step="1"
-            onChange={(e) => setWend(e.target.value)}
-          />
-        </label>
-      </div>
-        <label>
-          Bullet point one:{" "}
-          <input
-            value={bulletOne}
-            type="text"
-            placeholder="Solve lots of complex problems"
-            onChange={(e) => setBulletOne(e.target.value)}
-          />
-        </label>
-        <label>
-          Bullet point two:{" "}
-          <input
-            value={bulletTwo}
-            type="text"
-            placeholder="Mass-energy equivalence"
-            onChange={(e) => setBulletTwo(e.target.value)}
-          />
-        </label>
-        <label>
-          Bullet point three:{" "}
-          <input
-            value={bulletThree}
-            type="text"
-            placeholder="Create the theory of relativity"
-            onChange={(e) => setBulletThree(e.target.value)}
-          />
-        </label>
-        <button
-          className="formButton"
-          onClick={(e) => {
-            e.preventDefault();
-            setExperience([
-              ...experience,
-              {
-                id: crypto.randomUUID(),
-                employer: employer,
-                jobTitle: jobTitle,
-                wstart: wstart,
-                wend: wend,
-                bulletOne: bulletOne,
-                bulletTwo: bulletTwo,
-                bulletThree: bulletThree,
-              },
-            ]);
-            setEmployer("");
-            setWstart("");
-            setWend("");
-            setBulletOne("");
-            setBulletTwo("");
-            setBulletThree("");
-          }}
-        >
-          Add experience
-        </button>
-        <button
-          className="formButton"
-        onClick={(e) => {
-          e.preventDefault();
-          updateView();
-        }}
-    >
-          Finalize and build resume!
-        </button>
-      </form> : null }
-      { showPreview ? 
-      <div className="previewDetails">
-        <h1>Preview: </h1>
-        <div className="generalPreview">
-          <h2>General Information: </h2>
-          <div className="details">
-            <div>
-              <h3>{general.firstName}</h3>
-              <h3>{general.lastName}</h3>
-            </div>
-            <div>
-              <h3>{general.email}</h3>
-              <h3>{general.phone}</h3>
+          <div className="buttonRow">
+            <button
+              className="formButton"
+              onClick={(e) => {
+                e.preventDefault();
+                setExperience([
+                  ...experience,
+                  {
+                    id: crypto.randomUUID(),
+                    employer: employer,
+                    jobTitle: jobTitle,
+                    wstart: wstart,
+                    wend: wend,
+                    bulletOne: bulletOne,
+                    bulletTwo: bulletTwo,
+                    bulletThree: bulletThree,
+                  },
+                ]);
+                setEmployer("");
+                setWstart("");
+                setWend("");
+                setBulletOne("");
+                setBulletTwo("");
+                setBulletThree("");
+              }}
+            >
+              Add experience
+            </button>
+          </div>
+          <div className="buttonRow">
+            <button
+              className="formButton"
+              onClick={(e) => {
+                e.preventDefault();
+                updateView();
+              }}
+            >
+              Finalize and build resume!
+            </button>
+          </div>
+        </form>
+      ) : null}
+      {showPreview ? (
+        <div className="previewDetails">
+          <h1>Preview: </h1>
+          <div className="generalPreview">
+            <h2>General Information: </h2>
+            <div className="details">
+              <div>
+                <h3>{general.firstName}</h3>
+                <h3>{general.lastName}</h3>
+              </div>
+              <div>
+                <h3>{general.email}</h3>
+                <h3>{general.phone}</h3>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="skillPreview">
-          <h2>Skills: </h2>
-          <div className="details">
-            {skills.map((skill) => (
-              <h3 key={skill.id}>
-                {skill.skill}
-                <button
-                  className="prevButton"
-                  onClick={() => {
-                    setSkills(skills.filter((s) => s.id !== skill.id));
-                  }}
-                >
-                  <img src={Remove} alt="Remove" />
-                </button>
-              </h3>
-            ))}
-          </div>
-        </div>
-        <div className="educationPreview">
-          <h2>Education: </h2>
-          <div className="details">
-            {education.map((entry) => (
-              <div key={entry.id}>
-                <h3>
-                  {entry.school} - {entry.start} to {entry.end}
+          <div className="skillPreview">
+            <h2>Skills: </h2>
+            <div className="details">
+              {skills.map((skill) => (
+                <h3 key={skill.id}>
+                  {skill.skill}
                   <button
                     className="prevButton"
                     onClick={() => {
-                      setEducation(education.filter((e) => e.id !== entry.id));
+                      setSkills(skills.filter((s) => s.id !== skill.id));
                     }}
                   >
                     <img src={Remove} alt="Remove" />
                   </button>
                 </h3>
-                <p>
-                  {entry.major}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
+          </div>
+          <div className="educationPreview">
+            <h2>Education: </h2>
+            <div className="details">
+              {education.map((entry) => (
+                <div key={entry.id}>
+                  <h3>
+                    {entry.school} - {entry.start} to {entry.end}
+                    <button
+                      className="prevButton"
+                      onClick={() => {
+                        setEducation(
+                          education.filter((e) => e.id !== entry.id),
+                        );
+                      }}
+                    >
+                      <img src={Remove} alt="Remove" />
+                    </button>
+                  </h3>
+                  <p>{entry.major}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="experiencePreview">
+            <h2>Experience: </h2>
+            <div className="details">
+              {experience.map((entry) => (
+                <div key={entry.id}>
+                  <h3>
+                    {entry.employer} - {entry.wstart} to {entry.wend}{" "}
+                    <button
+                      className="prevButton"
+                      onClick={() => {
+                        setExperience(
+                          experience.filter((e) => e.id !== entry.id),
+                        );
+                      }}
+                    >
+                      <img src={Remove} alt="Remove" />
+                    </button>
+                  </h3>
+                  <div>{entry.jobTitle}</div>
+                  <p>• {entry.bulletOne}</p>
+                  <p>• {entry.bulletTwo}</p>
+                  <p>• {entry.bulletThree}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-        <div className="experiencePreview">
-          <h2>Experience: </h2>
-          <div className="details">
-            {experience.map((entry) => (
-              <div key={entry.id}>
-                <h3>
-                  {entry.employer} - {entry.wstart} to {entry.wend}{" "}
-                <button
-                    className="prevButton"
-                  onClick={() => {
-                    setExperience(experience.filter((e) => e.id !== entry.id));
-                  }}
-                >
-                  <img src={Remove} alt="Remove" />
-                </button>
-                </h3>
-                <div>{entry.jobTitle}</div>
-                <p>• {entry.bulletOne}</p>
-                <p>• {entry.bulletTwo}</p>
-                <p>• {entry.bulletThree}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div> : null }
-    { showResume ? <Resume general={general}
-                           skills={skills}
-                           education={education}
-                           experience={experience}
-        /> : null }
+      ) : null}
+      {showResume ? (
+        <Resume
+          general={general}
+          skills={skills}
+          education={education}
+          experience={experience}
+        />
+      ) : null}
     </>
   );
 }
