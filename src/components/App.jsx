@@ -119,6 +119,7 @@ export default function App() {
             </label>
             <button
               className="formButton"
+              id="skillButton"
               onClick={(e) => {
                 e.preventDefault();
                 setSkills([
@@ -349,7 +350,7 @@ export default function App() {
                       setSkills(skills.filter((s) => s.id !== skill.id));
                     }}
                   >
-                    <img src={Remove} alt="Remove" />
+                    <img className="rmv" src={Remove} alt="Remove" />
                   </button>
                 </h3>
               ))}
@@ -370,7 +371,7 @@ export default function App() {
                         );
                       }}
                     >
-                      <img src={Remove} alt="Remove" />
+                      <img className="rmv" src={Remove} alt="Remove" />
                     </button>
                   </h3>
                   <p>{entry.major}</p>
@@ -393,7 +394,7 @@ export default function App() {
                         );
                       }}
                     >
-                      <img src={Remove} alt="Remove" />
+                      <img className="rmv" src={Remove} alt="Remove" />
                     </button>
                   </h3>
                   <div>{entry.jobTitle}</div>
