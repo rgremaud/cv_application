@@ -1,26 +1,26 @@
+import Phone from "./phone.svg";
+import Mail from "./mail.svg";
+
 export default function Resume({ general, skills, education, experience }) {
   return (
     <div className="finalResume">
-      <div className="details">
-        <div>
-          <h3>{general.firstName}</h3>
-          <h3>{general.lastName}</h3>
-        </div>
-        <div>
-          <h3>{general.email}</h3>
-          <h3>{general.phone}</h3>
-        </div>
+      <div className="header">
+          {general.firstName} {general.lastName}
       </div>
-      <div className="skills">
-        <div className="details">
+      <div className="sidebar">
+          <div>
+            <img src={Mail} alt="Email" />
+            {general.email}
+          </div>
+          <div>
+            <img src={Phone} alt="Phone" />
+            {general.phone}
+          </div>
           {skills.map((skill) => (
-            <h3 key={skill.id}>{skill.skill}</h3>
+            <div key={skill.id}>{skill.skill}</div>
           ))}
-        </div>
       </div>
-      <div className="educationPreview">
-        <h2>Education: </h2>
-        <div className="details">
+      <div className="educationFinal">
           {education.map((entry) => (
             <div key={entry.id}>
               <h2>
@@ -29,11 +29,8 @@ export default function Resume({ general, skills, education, experience }) {
               <p>{entry.major}</p>
             </div>
           ))}
-        </div>
       </div>
-      <div className="experiencePreview">
-        <h2>Experience: </h2>
-        <div className="details">
+      <div className="experienceFinal">
           {experience.map((entry) => (
             <div key={entry.id}>
               <h2>
@@ -44,7 +41,6 @@ export default function Resume({ general, skills, education, experience }) {
               <p>• {entry.bulletThree}</p>
             </div>
           ))}
-        </div>
       </div>
     </div>
   );

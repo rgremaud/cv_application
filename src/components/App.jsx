@@ -299,6 +299,7 @@ export default function App() {
                   },
                 ]);
                 setEmployer("");
+                setJobTitle("");
                 setWstart("");
                 setWend("");
                 setBulletOne("");

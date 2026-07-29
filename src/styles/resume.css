@@ -1,0 +1,37 @@
+.finalResume {
+  background-color: #ffffff;
+  width: 60vw;
+  margin-left: 20vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-areas: 
+    "header header"
+    "content sidebar"
+    "content sidebar";
+}
+
+.header {
+  display: flex;
+  grid-area: header;
+  height: 10vh; 
+  background-color: #673ab7;
+  color: #d0d0d0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 8vh; 
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.sidebar > * {
+  display: flex;
+  flex-direction: row;
+}
+
+.educationalFinal,
+.experienceFinal {
+  grid-area: content;
+}
