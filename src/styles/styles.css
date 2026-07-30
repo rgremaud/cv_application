@@ -19,8 +19,8 @@ form {
   width: 39%;
   background-color: #ffffff;
   display: flex;
-  margin: .5%;
-  padding: .5%;
+  margin: 0.5%;
+  padding: 0.5%;
   border: 1px #161616 solid;
   border-radius: 5px;
   flex-direction: column;
@@ -88,8 +88,8 @@ input:valid {
 
 .previewDetails {
   width: 59%;
-  margin: .5%;
-  padding: .5%;
+  margin: 0.5%;
+  padding: 0.5%;
   border: 1px #161616 solid;
   border-radius: 5px;
   background-color: #ffffff;
@@ -123,4 +123,3 @@ input:valid {
   display: flex;
   flex-direction: column;
 }
-

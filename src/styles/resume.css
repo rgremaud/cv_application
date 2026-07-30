@@ -5,7 +5,7 @@
   height: 100vh;
   display: grid;
   grid-template-columns: 3fr 1fr;
-  grid-template-areas: 
+  grid-template-areas:
     "header header"
     "content sidebar"
     "content sidebar";
@@ -14,24 +14,46 @@
 .header {
   display: flex;
   grid-area: header;
-  height: 10vh; 
-  background-color: #673ab7;
+  height: 10vh;
+  background-color: #37474f;
   color: #d0d0d0;
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 8vh; 
+  font-size: 8vh;
 }
 
 .sidebar {
+  height: 90vh;
   grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f2f2;
+  justify-content: space-around;
+}
+
+h3 {
+  border-top: 1px solid #37474f;
+  border-bottom: 1px solid #37474f;
 }
 
 .sidebar > * {
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 
-.educationalFinal,
+img {
+  margin-right: 5px;
+}
+
+.educationFinal {
+  flex-direction: column;
+}
+
 .experienceFinal {
   grid-area: content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 90vh;
 }
