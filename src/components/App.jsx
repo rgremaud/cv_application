@@ -10,6 +10,8 @@ export default function App() {
     phone: "",
   });
 
+  const [color, setColor] = useState("");
+
   const [skill, setSkill] = useState("");
   const [skills, setSkills] = useState([]);
 
@@ -309,6 +311,16 @@ export default function App() {
             >
               Add experience
             </button>
+          </div>
+          <div>
+            <label>Color preference:</label>
+            <select
+            >
+              <option value="#37474F">Dark green</option>
+              <option value="#673AB7">Purple</option>
+              <option value="#0f62fe">Blue</option>
+              <option value="#08bdba">Turqoise</option>
+            </select>
           </div>
           <div className="buttonRow">
             <button
