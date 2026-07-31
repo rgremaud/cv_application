@@ -9,15 +9,15 @@ export default function Resume({ general, skills, education, experience }) {
       </div>
       <div className="sidebar">
         <div className="sidebarLine">
-          <img src={Mail} alt="Email" />
+          <img src={Mail} alt="Email" className="resImg" />
           {general.email}
         </div>
         <div className="sidebarLine">
-          <img src={Phone} alt="Phone" />
+          <img src={Phone} alt="Phone" className="resImg" />
           {general.phone}
         </div>
         <div className="educationFinal">
-          <h3>Education</h3>
+          <h3 className="resTitle">Education</h3>
           {education.map((entry) => (
             <div key={entry.id}>
               <div> {entry.school} </div>
@@ -29,7 +29,7 @@ export default function Resume({ general, skills, education, experience }) {
             </div>
           ))}
         </div>
-        <h3>Skills</h3>
+        <h3 className="resTitle">Skills</h3>
         {skills.map((skill) => (
           <div key={skill.id}>{skill.skill}</div>
         ))}
@@ -39,8 +39,9 @@ export default function Resume({ general, skills, education, experience }) {
         {experience.map((entry) => (
           <div key={entry.id}>
             <h2>
-              {entry.employer} - {entry.wstart} to {entry.wend}{" "}
+              {entry.employer} 
             </h2>
+            <div>{entry.wstart} to {entry.wend}</div> 
             <p>• {entry.bulletOne}</p>
             <p>• {entry.bulletTwo}</p>
             <p>• {entry.bulletThree}</p>

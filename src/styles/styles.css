@@ -74,10 +74,6 @@ button {
   height: fit-content;
 }
 
-button:hover {
-  background-color: #be95ff;
-}
-
 input:invalid {
   border: 1px solid #ff6f00;
 }

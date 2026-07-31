@@ -31,7 +31,7 @@
   justify-content: space-around;
 }
 
-h3 {
+.resTitle {
   border-top: 1px solid #37474f;
   border-bottom: 1px solid #37474f;
 }
@@ -39,10 +39,10 @@ h3 {
 .sidebar > * {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 95%;
 }
 
-img {
+.resImg {
   margin-right: 5px;
 }
 
@@ -54,6 +54,7 @@ img {
   grid-area: content;
   display: flex;
   flex-direction: column;
+  margin-left: 5px;
   justify-content: space-around;
   height: 90vh;
 }
