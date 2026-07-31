@@ -1,10 +1,11 @@
 import Phone from "./phone.svg";
 import Mail from "./mail.svg";
 
-export default function Resume({ general, skills, education, experience }) {
+export default function Resume({color, general, skills, education, experience }) {
   return (
     <div className="finalResume">
       <div className="header">
+        {color}
         {general.firstName} {general.lastName}
       </div>
       <div className="sidebar">

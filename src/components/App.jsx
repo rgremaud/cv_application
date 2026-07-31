@@ -315,6 +315,7 @@ export default function App() {
           <div>
             <label>Color preference:</label>
             <select
+              onChange={(e) => {setColor(e.value)}}
             >
               <option value="#37474F">Dark green</option>
               <option value="#673AB7">Purple</option>
@@ -422,6 +423,7 @@ export default function App() {
       ) : null}
       {showResume ? (
         <Resume
+          color={color}
           general={general}
           skills={skills}
           education={education}
