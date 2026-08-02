@@ -10,7 +10,7 @@ export default function App() {
     phone: "",
   });
 
-  const [color, setColor] = useState("");
+  const [color, setColor] = useState("#37474F");
 
   const [skill, setSkill] = useState("");
   const [skills, setSkills] = useState([]);
@@ -312,16 +312,21 @@ export default function App() {
               Add experience
             </button>
           </div>
-          <div>
+          <div className="formRow">
+            <div>
             <label>Color preference:</label>
             <select
-              onChange={(e) => {setColor(e.value)}}
+              value={color}
+              onChange={e => setColor(e.target.value)}
             >
               <option value="#37474F">Dark green</option>
               <option value="#673AB7">Purple</option>
               <option value="#0f62fe">Blue</option>
               <option value="#08bdba">Turqoise</option>
             </select>
+            </div>
+            <div className="colorExample"
+            style={{ height: "1.5vw", width: "1.5vw", backgroundColor: color, display: "flex" }}></div> 
           </div>
           <div className="buttonRow">
             <button

@@ -3,9 +3,10 @@ import Mail from "./mail.svg";
 
 export default function Resume({color, general, skills, education, experience }) {
   return (
-    <div className="finalResume">
+    <div className="finalResume"
+    style={{ backgroundColor: color }}
+    >
       <div className="header">
-        {color}
         {general.firstName} {general.lastName}
       </div>
       <div className="sidebar">
